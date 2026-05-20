@@ -18,12 +18,25 @@ const SCHEMA = [
   { name: 'entity', required: true, selector: { entity: { domain: 'fan' } } },
   { name: 'name', selector: { text: {} } },
   { name: 'showName', selector: { boolean: {} } },
+  {
+    name: 'size',
+    selector: {
+      select: {
+        options: [
+          { value: 'small', label: 'Small' },
+          { value: 'medium', label: 'Medium' },
+          { value: 'large', label: 'Large' },
+        ],
+      },
+    },
+  },
 ] as const;
 
 const LABELS: Record<string, string> = {
   entity: 'Fan',
   name: 'Name (optional)',
   showName: 'Show name',
+  size: 'Button size',
 };
 
 export function FanCardEditor({ hass, config, onConfigChanged }: EditorProps) {
