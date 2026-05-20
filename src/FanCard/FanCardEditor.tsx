@@ -17,11 +17,13 @@ interface EditorProps {
 const SCHEMA = [
   { name: 'entity', required: true, selector: { entity: { domain: 'fan' } } },
   { name: 'name', selector: { text: {} } },
+  { name: 'showName', selector: { boolean: {} } },
 ] as const;
 
 const LABELS: Record<string, string> = {
   entity: 'Fan',
   name: 'Name (optional)',
+  showName: 'Show name',
 };
 
 export function FanCardEditor({ hass, config, onConfigChanged }: EditorProps) {
@@ -42,10 +44,14 @@ export function FanCardEditor({ hass, config, onConfigChanged }: EditorProps) {
     (schema: { name: string }) => LABELS[schema.name] ?? schema.name,
   );
 
+  // Hydrate the toggle state from config defaults so it matches the rendered
+  // card (showName undefined is treated as true).
+  const data = { ...config, showName: config.showName !== false };
+
   return (
     <ha-form
       hass={hass}
-      data={config}
+      data={data}
       schema={SCHEMA}
       computeLabel={computeLabel}
       onvalue-changed={handleValueChanged}

@@ -4,6 +4,7 @@ import './FanCard.styles';
 export interface FanCardConfig {
   entity: `fan.${string}` | '';
   name?: string;
+  showName?: boolean;
 }
 
 export function FanCard({ config }: { config: FanCardConfig }) {
@@ -41,6 +42,7 @@ export function FanCard({ config }: { config: FanCardConfig }) {
 
   const isOff = entity.state === 'off';
   const currentPct = entity.attributes.percentage ?? 0;
+  const showName = config.showName !== false;
   const displayName = config.name || entity.attributes.friendly_name || config.entity;
 
   // fan.toggle preserves last speed: off → previous speed; on → off.
@@ -54,7 +56,7 @@ export function FanCard({ config }: { config: FanCardConfig }) {
   return (
     <ha-card>
       <div class="card-content fan-card">
-        <div class="fan-card__name">{displayName}</div>
+        {showName && <div class="fan-card__name">{displayName}</div>}
         <div class="fan-card__levels">
           <button
             type="button"
