@@ -1,7 +1,7 @@
 {
   "name": "fan-card",
   "private": true,
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Home Assistant card that controls a fan via a segmented level row",
   "author": {
     "name": "Stu Kabakoff",
@@ -35,7 +35,7 @@
   "dependencies": {
     "home-assistant-js-websocket": "^9.6.0",
     "preact": "^10.27.2",
-    "preact-homeassistant": "^0.2.0"
+    "preact-homeassistant": "^0.2.2"
   },
   "dependenciesMeta": {
     "preact-homeassistant": {
