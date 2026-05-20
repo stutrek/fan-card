@@ -29,8 +29,11 @@ css`
   }
 
   .fan-card__level {
-    width: 36px;
-    height: 36px;
+    /* Preferred size is 36px (small). Buttons can shrink below that to keep
+       everything on one line; aspect-ratio keeps them square as they shrink. */
+    flex: 0 1 36px;
+    min-width: 0;
+    aspect-ratio: 1;
     padding: 0;
     display: inline-flex;
     align-items: center;
@@ -61,6 +64,30 @@ css`
     width: 20px;
     height: 20px;
     display: inline-flex;
+  }
+
+  /* Medium: 56px buttons */
+  .fan-card--medium .fan-card__level {
+    flex-basis: 56px;
+    font-size: 1.1em;
+  }
+
+  .fan-card--medium .fan-card__power ha-icon {
+    --mdc-icon-size: 28px;
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Large: 72px buttons */
+  .fan-card--large .fan-card__level {
+    flex-basis: 72px;
+    font-size: 1.25em;
+  }
+
+  .fan-card--large .fan-card__power ha-icon {
+    --mdc-icon-size: 36px;
+    width: 36px;
+    height: 36px;
   }
 
   .fan-card__empty {

@@ -71,3 +71,30 @@ export const NoEntityConfigured: Story = {
 export const EntityNotFound: Story = {
   render: () => wrap({}, { entity: 'fan.missing' }),
 };
+
+export const SizeMedium: Story = {
+  name: 'Size - Medium',
+  render: () => wrap(threeSpeedFan('on', 67), { entity: 'fan.bedroom', size: 'medium' }),
+};
+
+export const SizeLarge: Story = {
+  name: 'Size - Large',
+  render: () => wrap(fourSpeedFan('on', 75), { entity: 'fan.living_room', size: 'large' }),
+};
+
+export const AllSizes: Story = {
+  name: 'All Sizes',
+  render: () => {
+    const hass = createMockHass({ entities: threeSpeedFan('on', 67) });
+    return (
+      <HAProvider hass={hass} subscribeToEntity={noopSubscribe}>
+        <style>{getAllStyles()}</style>
+        <div style={{ maxWidth: 420, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <FanCard config={{ entity: 'fan.bedroom' }} />
+          <FanCard config={{ entity: 'fan.bedroom', size: 'medium' }} />
+          <FanCard config={{ entity: 'fan.bedroom', size: 'large' }} />
+        </div>
+      </HAProvider>
+    );
+  },
+};

@@ -5,6 +5,7 @@ export interface FanCardConfig {
   entity: `fan.${string}` | '';
   name?: string;
   showName?: boolean;
+  size?: 'small' | 'medium' | 'large';
 }
 
 export function FanCard({ config }: { config: FanCardConfig }) {
@@ -44,6 +45,12 @@ export function FanCard({ config }: { config: FanCardConfig }) {
   const currentPct = entity.attributes.percentage ?? 0;
   const showName = config.showName !== false;
   const displayName = config.name || entity.attributes.friendly_name || config.entity;
+  const sizeClass =
+    config.size === 'large'
+      ? ' fan-card--large'
+      : config.size === 'medium'
+        ? ' fan-card--medium'
+        : '';
 
   // fan.toggle preserves last speed: off → previous speed; on → off.
   const onClickPower = () => fanService('toggle');
@@ -55,7 +62,7 @@ export function FanCard({ config }: { config: FanCardConfig }) {
 
   return (
     <ha-card>
-      <div class="card-content fan-card">
+      <div class={`card-content fan-card${sizeClass}`}>
         {showName && <div class="fan-card__name">{displayName}</div>}
         <div class="fan-card__levels">
           <button
