@@ -53,18 +53,18 @@ describe('FanCard', () => {
     expect(screen.getByText('4')).toBeTruthy();
   });
 
-  it("power button is not active and label is 'Turn on' when fan is off", () => {
+  it("power button is active and label is 'Turn on' when fan is off", () => {
     renderCard(makeFanEntity('off', 0, 100 / 3));
 
     const power = screen.getByLabelText('Turn on');
-    expect(power.className).not.toContain('is-active');
+    expect(power.className).toContain('is-active');
   });
 
-  it("power button is active and label is 'Turn off' when fan is on", () => {
+  it("power button is not active and label is 'Turn off' when fan is on", () => {
     renderCard(makeFanEntity('on', 67, 100 / 3));
 
     const power = screen.getByLabelText('Turn off');
-    expect(power.className).toContain('is-active');
+    expect(power.className).not.toContain('is-active');
   });
 
   it('no numbered button is highlighted when the fan is off', () => {
