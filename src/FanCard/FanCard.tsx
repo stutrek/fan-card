@@ -67,11 +67,11 @@ export function FanCard({ config }: { config: FanCardConfig }) {
         <div class="fan-card__levels">
           <button
             type="button"
-            class={`fan-card__level fan-card__power${isOff ? '' : ' is-active'}`}
+            class={`fan-card__level fan-card__power${isOff ? ' is-active' : ''}`}
             aria-label={isOff ? 'Turn on' : 'Turn off'}
             onClick={onClickPower}
           >
-            <ha-icon icon={isOff ? 'mdi:fan-off' : 'mdi:fan'} />
+            <ha-icon icon="mdi:fan-off" />
           </button>
           {hasLevels &&
             Array.from({ length: numLevels }, (_, idx) => {
