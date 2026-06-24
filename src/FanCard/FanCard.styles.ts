@@ -59,6 +59,12 @@ css`
     color: var(--text-primary-color, #fff);
   }
 
+  .fan-card__level.is-optimistic {
+    background: color-mix(in srgb, var(--primary-color, #03a9f4) 50%, transparent);
+    border-color: var(--primary-color, #03a9f4);
+    color: var(--text-primary-color, #fff);
+  }
+
   .fan-card__power ha-icon {
     --mdc-icon-size: 20px;
     width: 20px;
