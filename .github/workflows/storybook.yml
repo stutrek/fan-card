@@ -28,7 +28,7 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
       - name: Build storybook
-        run: STORYBOOK_BASE=/preact-homeassistant-template/ pnpm build-storybook --output-dir storybook-static
+        run: STORYBOOK_BASE=/${{ github.event.repository.name }}/ pnpm build-storybook --output-dir storybook-static
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

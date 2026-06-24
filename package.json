@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stutrek/preact-homeassistant-template.git"
+    "url": "git+https://github.com/stutrek/fan-card.git"
   },
   "license": "MIT",
   "type": "module",
