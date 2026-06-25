@@ -1,4 +1,4 @@
-import { useEntity, useService } from 'preact-homeassistant';
+import { HACard, useEntity, useService } from 'preact-homeassistant';
 import { useEffect, useRef, useState } from 'preact/hooks';
 import './FanCard.styles';
 
@@ -57,21 +57,21 @@ export function FanCard({ config }: { config: FanCardConfig }) {
 
   if (!config.entity) {
     return (
-      <ha-card>
+      <HACard>
         <div class="card-content fan-card__empty">
           No fan configured. Pick one in the card editor.
         </div>
-      </ha-card>
+      </HACard>
     );
   }
 
   if (!entity) {
     return (
-      <ha-card>
+      <HACard>
         <div class="card-content fan-card__empty">
           Waiting for <code>{config.entity}</code>...
         </div>
-      </ha-card>
+      </HACard>
     );
   }
 
@@ -122,7 +122,7 @@ export function FanCard({ config }: { config: FanCardConfig }) {
   };
 
   return (
-    <ha-card>
+    <HACard>
       <div class={`card-content fan-card${sizeClass}`}>
         {showName && <div class="fan-card__name">{displayName}</div>}
         <div class="fan-card__levels">
@@ -153,6 +153,6 @@ export function FanCard({ config }: { config: FanCardConfig }) {
             })}
         </div>
       </div>
-    </ha-card>
+    </HACard>
   );
 }
